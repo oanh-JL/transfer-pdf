@@ -47,7 +47,7 @@ public class BarChart {
         ClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 5, 8, 20);
 
         XSSFChart chart = drawing.createChart(anchor);
-        chart.setTitleText("x = 2x and x = 3x");
+        chart.setTitleText("bar chart");
         chart.setTitleOverlay(false);
         XDDFChartLegend legend = chart.getOrAddLegend();
         legend.setPosition(LegendPosition.TOP_RIGHT);
@@ -66,7 +66,7 @@ public class BarChart {
 
         XDDFChartData data = chart.createData(ChartTypes.BAR, bottomAxis, leftAxis);
         XDDFChartData.Series series1 = data.addSeries(xs, ys1);
-        series1.setTitle("series1", null); // https://stackoverflow.com/questions/21855842
+        series1.setTitle("series1", null);
         XDDFChartData.Series series2 = data.addSeries(xs, ys2);
         series2.setTitle("series2", null);
         XDDFChartData.Series series3 = data.addSeries(xs, ys3);
@@ -84,13 +84,11 @@ public class BarChart {
 
         XDDFBarChartData bar = (XDDFBarChartData) data;
         bar.setBarDirection(BarDirection.COL);
-        // looking for "Stacked Bar Chart"? uncomment the following line
-        // bar.setBarGrouping(BarGrouping.STACKED);
 
         solidFillSeries(data, 0, PresetColor.CHARTREUSE);
         solidFillSeries(data, 1, PresetColor.TURQUOISE);
         solidFillSeries(data, 2, PresetColor.AQUA);
-        solidFillSeries(data, 3, PresetColor.CYAN);
+        solidFillSeries(data, 3, PresetColor.CHOCOLATE);
 
         // Write the output to a file
         try (FileOutputStream fileOut = new FileOutputStream("u-bar-chart.xlsx")) {
